@@ -7,9 +7,9 @@ public class GridManager : Manager<GridManager>
 {
     public Tilemap grid;
 
-    Graph graph;
+    protected Graph graph;
 
-    Dictionary<Team, int> startPositionPerTeam;
+    protected Dictionary<Team, int> startPositionPerTeam;
 
     public Node GetFreeNode(Team forTeam)
     {
@@ -87,6 +87,9 @@ public class GridManager : Manager<GridManager>
         }
     }
 
+    public int fromIndex = 0;
+    public int toIndex = 0;
+
 
     // Visualzes nodes and edges for debugging purposes
     private void OnDrawGizmos()
@@ -106,6 +109,15 @@ public class GridManager : Manager<GridManager>
         {
             Gizmos.color = n.isOccupied? Color.red : Color.green;
             Gizmos.DrawSphere(n.worldPosition, 0.1f);
+        }
+
+        if(fromIndex < allNodes.Count && toIndex < allNodes.Count){
+            List<Node> path = graph.GetPath(allNodes[fromIndex], allNodes[toIndex]);
+            if(path.Count > 1){
+                for(int i = 1; i < path.Count; i++){
+                    Debug.DrawLine(path[i-1].worldPosition, path[i].worldPosition, Color.red);
+                }
+            }
         }
     }
 }

@@ -46,6 +46,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public List<BaseEntity> GetEntitiesAgainst(Team againstTeam){
+        if(againstTeam == Team.Team1)
+            return entitiesByTeam[Team.Team2];
+        else
+            return entitiesByTeam[Team.Team1];
+    }
+
 
 }
 

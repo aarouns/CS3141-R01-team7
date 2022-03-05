@@ -15,6 +15,9 @@ public class BaseEntity : MonoBehaviour
 
     protected Team myTeam;
     protected Node currentNode;
+    protected BaseEntity currentTarget = null;
+    protected bool moving;
+    protected Node destination;
 
     public void Setup(Team team, Node spawnNode)
     {
@@ -30,6 +33,72 @@ public class BaseEntity : MonoBehaviour
         currentNode.SetOccupied(true);
 
 
+    }
+
+    protected void FindTarget(){
+        var allEnemies = GameManager.Instance.GetEntitiesAgainst(myTeam);
+        float minDistance = Mathf.Infinity;
+        BaseEntity candidateTarget = null;
+
+        foreach(BaseEntity e in allEnemies){
+             if(Vector3.Distance(e.transform.position, this.transform.position) <= minDistance){
+                minDistance = Vector3.Distance(e.transform.position, this.transform.position);
+                candidateTarget = e;
+             }
+        }
+
+        currentTarget = candidateTarget;
+    }
+
+    protected void GetInRange(){
+        if(currentTarget = null)
+            return;
+
+        if(!moving){
+            Node candidateDestination = null;
+            List<Node> candidates = GridManager.Instance.GetNodesCloseTo(currentTarget.currentNode);
+            candidates = candidates.Orderby(x => Vector3.Distance(x.worldPosition, this.transform.position)).ToList();
+
+            for(int i = 0; i < candidates.Count; i++){
+                if(!candidates[i].IsOccupied){
+                    candidateDestination = candidates[i];
+                    break;
+                }
+            }
+
+            if(candidateDestination == null)
+                return;
+
+            var path = GridManager.Instance.GetPath(currentNode, candidateDestination);
+            if(path == null || path.count <=1)
+                return;
+
+            if(path[1].IsOccupied)
+                return;
+
+            path[1].SetOccupied(true);
+            destination = path[1];
+
+
+        }
+
+        moving = !MoveTowards();
+        if(!moving){
+            currentNode.SetOccupied(false);
+            currentNode = destination;
+        }
+    }
+
+    protected bool MoveTowards(){
+        Vector3 direction = destination.worldPosition - this.transform.position;
+
+        if(direction.sqrMagnitude = destination.worldPosition){
+            transform.position = destination.worldPosition;
+            return true;
+        }
+
+        this.transform.position += direction.normalized * movementSpeed * Time.deltaTime;
+        return false;
     }
 
 }

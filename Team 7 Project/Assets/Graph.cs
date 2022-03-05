@@ -60,6 +60,53 @@ public class Graph : MonoBehaviour
 
         return Mathf.Infinity;
     }
+    
+    public List<Node> GetPath(Node start, Node end){
+        List<Node> path = new List<Node>();
+
+        if(start == end){
+            path.Add(start);
+            return path;
+        }
+
+        List<Node> openList = new List<Node>();
+        Dictionary<Node, Node> previous = new Dictionary<Node, Node>();
+        Dictionary<Node, float> distances = new Dictionary<Node, float>();
+
+        for(int i = 0; i < nodes.count; i++){
+            openList.Add(nodes[i]);
+
+            distances.Add(nodes[i], float.PositiveInfinity);
+        }
+
+        while(openList.Count > 0){
+            openList = openList.OrderBy(x => distances[x]).ToList();
+            Node current = openList[0];
+            openList.Remove(current);
+
+            if(current == end){
+                while(previous.ContainsKey(current)){
+                    path.Insert(0, current);
+                    current = previous[current];
+                }
+
+                path.Insert(0, current);
+                break;
+            }
+
+            foreach(Node neighbor in Neighbors(current)){
+                float distance = Distance(current, neighbor);
+                float cadidateNewDistance = distances[current] + distance;
+
+                if(cadidateNewDistance < distances[neighbor]){
+                    distances[neighbor] = cadidateNewDistance;
+                    previous[neighbor] = current;
+                }
+            }
+
+            return path;
+        }
+    }
 }
 
 // The spot in which an entity is positioned on
