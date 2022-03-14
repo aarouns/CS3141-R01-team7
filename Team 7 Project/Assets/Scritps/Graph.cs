@@ -73,7 +73,7 @@ public class Graph : MonoBehaviour
         Dictionary<Node, Node> previous = new Dictionary<Node, Node>();
         Dictionary<Node, float> distances = new Dictionary<Node, float>();
 
-        for(int i = 0; i < nodes.count; i++){
+        for(int i = 0; i < nodes.Count; i++){
             openList.Add(nodes[i]);
 
             distances.Add(nodes[i], float.PositiveInfinity);
@@ -103,9 +103,9 @@ public class Graph : MonoBehaviour
                     previous[neighbor] = current;
                 }
             }
-
-            return path;
         }
+
+        return path;
     }
 }
 
