@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,44 +12,48 @@ public class GridManager : Manager<GridManager>
 
     protected Dictionary<Team, int> startPositionPerTeam;
 
+    private void Awake()
+    {
+        base.Awake();
+
+        InitializeGraph();
+        startPositionPerTeam = new Dictionary<Team, int>();
+        startPositionPerTeam.Add(Team.Team1, 0);
+        startPositionPerTeam.Add(Team.Team2, graph.Nodes.Count - 1);
+
+    }
+
     public Node GetFreeNode(Team forTeam)
     {
-
         int startIndex = startPositionPerTeam[forTeam];
         int currentIndex = startIndex;
 
-        while(graph.nodes[currentIndex].isOccupied)
+        while(graph.Nodes[currentIndex].isOccupied)
         {
-            if (startIndex == 0)
+            if(startIndex == 0)
             {
                 currentIndex++;
-                if(currentIndex == graph.nodes.Count)
-                {
+                if (currentIndex == graph.Nodes.Count)
                     return null;
-                }
             }
             else
             {
                 currentIndex--;
-                if(currentIndex == -1)
-                return null;
+                if (currentIndex == -1)
+                    return null;
             }
-
-
         }
-
-        return graph.nodes[currentIndex];
-
+        return graph.Nodes[currentIndex];
     }
 
-    private void Awake()
+    public List<Node> GetPath(Node from, Node to)
     {
-        base.Awake();
-        InitializeGraph();
-        startPositionPerTeam = new Dictionary<Team, int>();
-        startPositionPerTeam.Add(Team.Team1, 0);
-        startPositionPerTeam.Add(Team.Team2, graph.nodes.Count - 1);
+            return graph.GetShortestPath(from, to);
+    }
 
+    public List<Node> GetNodesCloseTo(Node to)
+    {
+        return graph.Neighbors(to);
     }
 
     private void InitializeGraph()
@@ -72,7 +77,7 @@ public class GridManager : Manager<GridManager>
             }
         }
 
-        var allNodes = graph.nodes;
+        var allNodes = graph.Nodes;
 
         // Adds an edge for each adjacent node
         foreach(Node from in allNodes)
@@ -97,26 +102,31 @@ public class GridManager : Manager<GridManager>
         if(graph == null)
             return;
         
-        var allEdges = graph.edges;
+        var allEdges = graph.Edges;
+        if (allEdges == null)
+            return;
 
         foreach(Edge e in allEdges)
         {
             Debug.DrawLine(e.from.worldPosition, e.to.worldPosition, Color.black, 1);
         }
 
-        var allNodes = graph.nodes;
+        var allNodes = graph.Nodes;
+        if (allNodes == null)
+            return;
+
         foreach(Node n in allNodes)
         {
             Gizmos.color = n.isOccupied? Color.red : Color.green;
             Gizmos.DrawSphere(n.worldPosition, 0.1f);
         }
 
-        if(fromIndex < allNodes.Count && toIndex < allNodes.Count){
-            List<Node> path = graph.GetPath(allNodes[fromIndex], allNodes[toIndex]);
-            if(path.Count > 1){
-                for(int i = 1; i < path.Count; i++){
-                    Debug.DrawLine(path[i-1].worldPosition, path[i].worldPosition, Color.red);
-                }
+        List<Node> path = graph.GetShortestPath(allNodes[fromIndex], allNodes[toIndex]);
+        if (path.Count > 1)
+        {
+            for (int i = 1; i < path.Count; i++)
+            {
+                Debug.DrawLine(path[i - 1].worldPosition, path[i].worldPosition, Color.red, 10);
             }
         }
     }
