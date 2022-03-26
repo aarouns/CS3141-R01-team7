@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BaseEntity : MonoBehaviour
 {
-
+    public HealthBar barPrefab;
     public SpriteRenderer spriteRenderer;
     
     public int baseDamage = 1;
@@ -26,6 +26,10 @@ public class BaseEntity : MonoBehaviour
     protected bool moving;
     protected Node destination;
 
+    protected bool canAttack = true;
+    protected bool dead = false;
+    protected HealthBar healthbar;
+
     public void Setup(Team team, Node spawnNode)
     {
 
@@ -39,6 +43,23 @@ public class BaseEntity : MonoBehaviour
         transform.position = currentNode.worldPosition;
         currentNode.SetOccupied(true);
 
+        healthbar = Instantiate(barPrefab, this.transform);
+        healthbar.Setup(this.transform, baseHealth);
+
+    }
+
+    public void TakeDamage(int amount){
+
+        baseHealth -= amount;
+        healthbar.UpdateBar(baseHealth);
+
+        if(baseHealth <= 0){
+
+            dead = true;
+            CurrentNode.SetOccupied(false);
+            //GameManager.Instance.UnitDead(this); Can't find where this is in the vid
+
+        }
 
     }
 
