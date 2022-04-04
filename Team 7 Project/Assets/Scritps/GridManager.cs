@@ -12,7 +12,7 @@ public class GridManager : Manager<GridManager>
 
     protected Dictionary<Team, int> startPositionPerTeam;
 
-    protected void Awake()
+    new protected void Awake()
     {
         base.Awake();
 

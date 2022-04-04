@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Graph : MonoBehaviour
+public class Graph
 {
     private List<Node> nodes;
     private List<Edge> edges;
