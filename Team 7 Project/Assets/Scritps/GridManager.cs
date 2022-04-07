@@ -99,12 +99,15 @@ public class GridManager : MonoBehaviour
     // Visualzes nodes and edges for debugging purposes
     private void OnDrawGizmos()
     {
+        
         if(graph == null)
             return;
         
         var allEdges = graph.Edges;
-        if (allEdges == null)
+        if (allEdges == null) {
+            Debug.Log("Edges are null");
             return;
+        }
 
         foreach(Edge e in allEdges)
         {

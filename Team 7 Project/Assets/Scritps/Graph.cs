@@ -20,11 +20,13 @@ public class Graph
     public void AddNode(Vector3 worldPosition)
     {
         nodes.Add(new Node(nodes.Count, worldPosition));
+        Debug.Log("Node added");
     }
 
     public void AddEdge(Node from, Node to)
     {
         edges.Add(new Edge(from, to, Vector3.Distance(from.worldPosition, to.worldPosition)));
+        Debug.Log("Edge added");
     }
 
     // Returns true if the two nodes are adjacent
