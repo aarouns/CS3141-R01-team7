@@ -5,7 +5,7 @@ using System;
 
 public class GameManager : Manager<GameManager>
 {
-
+    /*
     public List<BaseEntity> allEntitiesPrefab;
 
     Dictionary<Team, List<BaseEntity>> entitiesByTeam = new Dictionary<Team, List<BaseEntity>>();
@@ -54,7 +54,7 @@ public class GameManager : Manager<GameManager>
             return entitiesByTeam[Team.Team1];
     }
 
-
+    */
 }
 
 public enum Team

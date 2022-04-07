@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GridManager : Manager<GridManager>
+public class GridManager : MonoBehaviour
 {
     public Tilemap grid;
 
@@ -12,9 +12,9 @@ public class GridManager : Manager<GridManager>
 
     protected Dictionary<Team, int> startPositionPerTeam;
 
-    new protected void Awake()
+    protected void Awake()
     {
-        base.Awake();
+        //base.Awake();
 
         InitializeGraph();
         startPositionPerTeam = new Dictionary<Team, int>();
@@ -22,7 +22,7 @@ public class GridManager : Manager<GridManager>
         startPositionPerTeam.Add(Team.Team2, graph.Nodes.Count - 1);
 
     }
-
+    
     public Node GetFreeNode(Team forTeam)
     {
         int startIndex = startPositionPerTeam[forTeam];

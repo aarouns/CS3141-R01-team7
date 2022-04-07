@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BaseEntity : MonoBehaviour
 {
+    /*
     public HealthBar barPrefab;
     public SpriteRenderer spriteRenderer;
     
@@ -128,5 +129,5 @@ public class BaseEntity : MonoBehaviour
         this.transform.position += direction.normalized * movementSpeed * Time.deltaTime;
         return false;
     }
-
+    */
 }
