@@ -53,7 +53,6 @@ public class GameManager : Manager<GameManager>
         else
             return entitiesByTeam[Team.Team1];
     }
-
     */
 }
 

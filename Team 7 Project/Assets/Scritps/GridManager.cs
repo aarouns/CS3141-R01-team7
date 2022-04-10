@@ -84,8 +84,9 @@ public class GridManager : MonoBehaviour
         {
             foreach(Node to in allNodes)
             {
-                if(Vector3.Distance(from.worldPosition, to.worldPosition) < 1f && from != to)
+                if(Vector3.Distance(from.worldPosition, to.worldPosition) <= 1f && from != to)
                 {
+                    Debug.Log("Add edge called.");
                     graph.AddEdge(from, to);
                 }
             }
