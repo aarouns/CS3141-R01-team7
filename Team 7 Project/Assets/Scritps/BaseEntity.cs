@@ -15,7 +15,7 @@ public class BaseEntity : MonoBehaviour
     public float attackSpeed = 1f;
     public float movementSpeed = 1f;
 
-    protected Team myTeam;
+    public Team myTeam;
     protected Node currentNode;
     protected BaseEntity currentTarget = null;
     
@@ -50,7 +50,7 @@ public class BaseEntity : MonoBehaviour
         */
 
     }
-    /*
+    
     public void TakeDamage(int amount){
 
         baseHealth -= amount;
@@ -60,12 +60,12 @@ public class BaseEntity : MonoBehaviour
 
             dead = true;
             CurrentNode.SetOccupied(false);
-            //GameManager.Instance.UnitDead(this); Can't find where this is in the vid
+            GameManager.Instance.UnitDead(this); 
 
         }
 
     }
-    */
+    
     protected void FindTarget(){
         var allEnemies = GameManager.Instance.GetEntitiesAgainst(myTeam);
         float minDistance = Mathf.Infinity;
@@ -82,7 +82,8 @@ public class BaseEntity : MonoBehaviour
     }
     
     protected void GetInRange(){
-        if(currentTarget = null)
+
+        if(currentTarget == null)
             return;
 
         if(!moving){
@@ -130,6 +131,28 @@ public class BaseEntity : MonoBehaviour
 
         this.transform.position += direction.normalized * movementSpeed * Time.deltaTime;
         return false;
+    }
+
+    protected virtual void Attack()
+    {
+
+        if (!canAttack)
+            return;
+
+        float waitBetweenAttack = 1 / attackSpeed;
+
+        StartCoroutine(WaitAttackCoroutine(waitBetweenAttack));
+
+    }
+
+    IEnumerator WaitAttackCoroutine(float waitTime)
+    {
+
+        canAttack = false;
+        yield return new WaitForSeconds(waitTime);
+        canAttack = true;
+
+
     }
     
 }

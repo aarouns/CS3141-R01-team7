@@ -15,5 +15,13 @@ public class MeleeEntity : BaseEntity{
         else
             GetInRange();
     }
+
+    protected override void Attack()
+    {
+
+        base.Attack();
+        
+
+    }
     
 }

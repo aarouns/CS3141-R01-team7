@@ -47,6 +47,15 @@ public class GameManager : Manager<GameManager>
 
     }
 
+    
+    public void UnitDead(BaseEntity e)
+    {
+
+        //entitiesByTeam[e.UnitTeam].Remove(e); Cannot find what UnitTeam is 
+        Destroy(e.gameObject);
+
+    }
+
     public List<BaseEntity> GetEntitiesAgainst(Team againstTeam){
         if(againstTeam == Team.Team1)
             return entitiesByTeam[Team.Team2];
