@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BaseEntity : MonoBehaviour
 {
-    //public HealthBar barPrefab;
+    public HealthBar barPrefab;
     public SpriteRenderer spriteRenderer;
     
     public int baseDamage = 1;
@@ -43,18 +43,16 @@ public class BaseEntity : MonoBehaviour
         this.currentNode = spawnNode;
         transform.position = currentNode.worldPosition;
         currentNode.SetOccupied(true);
-        
         /*
         healthbar = Instantiate(barPrefab, this.transform);
         healthbar.Setup(this.transform, baseHealth);
         */
-
     }
     
     public void TakeDamage(int amount){
 
         baseHealth -= amount;
-        healthbar.UpdateBar(baseHealth);
+        //healthbar.UpdateBar(baseHealth);
 
         if(baseHealth <= 0){
 

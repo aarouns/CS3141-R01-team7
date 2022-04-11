@@ -9,19 +9,19 @@ public class MeleeEntity : BaseEntity{
         if(!HasEnemy)
             FindTarget();
 
-        if(IsInRange && !moving)
-            Debug.Log("Attack!");
-        
+        if(IsInRange && !moving) {
+            if(canAttack) {
+                Attack();
+            }
+        }
         else
             GetInRange();
     }
 
     protected override void Attack()
     {
-
         base.Attack();
-        
-
+        currentTarget.TakeDamage(baseDamage);
     }
     
 }

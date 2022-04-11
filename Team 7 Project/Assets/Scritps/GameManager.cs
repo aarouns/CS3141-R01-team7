@@ -50,10 +50,8 @@ public class GameManager : Manager<GameManager>
     
     public void UnitDead(BaseEntity e)
     {
-
-        //entitiesByTeam[e.UnitTeam].Remove(e); Cannot find what UnitTeam is 
+        entitiesByTeam[e.myTeam].Remove(e);
         Destroy(e.gameObject);
-
     }
 
     public List<BaseEntity> GetEntitiesAgainst(Team againstTeam){
