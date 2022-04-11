@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class BaseEntity : MonoBehaviour
 {
-    /*
-    public HealthBar barPrefab;
+    //public HealthBar barPrefab;
     public SpriteRenderer spriteRenderer;
     
     public int baseDamage = 1;
@@ -26,10 +25,11 @@ public class BaseEntity : MonoBehaviour
     protected bool IsInRange => currentTarget != null && Vector3.Distance(this.transform.position, currentTarget.transform.position) <= range;
     protected bool moving;
     protected Node destination;
-
+    
     protected bool canAttack = true;
     protected bool dead = false;
     protected HealthBar healthbar;
+    
 
     public void Setup(Team team, Node spawnNode)
     {
@@ -43,12 +43,14 @@ public class BaseEntity : MonoBehaviour
         this.currentNode = spawnNode;
         transform.position = currentNode.worldPosition;
         currentNode.SetOccupied(true);
-
+        
+        /*
         healthbar = Instantiate(barPrefab, this.transform);
         healthbar.Setup(this.transform, baseHealth);
+        */
 
     }
-
+    /*
     public void TakeDamage(int amount){
 
         baseHealth -= amount;
@@ -63,7 +65,7 @@ public class BaseEntity : MonoBehaviour
         }
 
     }
-
+    */
     protected void FindTarget(){
         var allEnemies = GameManager.Instance.GetEntitiesAgainst(myTeam);
         float minDistance = Mathf.Infinity;
@@ -78,7 +80,7 @@ public class BaseEntity : MonoBehaviour
 
         currentTarget = candidateTarget;
     }
-
+    
     protected void GetInRange(){
         if(currentTarget = null)
             return;
@@ -117,7 +119,7 @@ public class BaseEntity : MonoBehaviour
             currentNode = destination;
         }
     }
-
+    
     protected bool MoveTowards(){
         Vector3 direction = destination.worldPosition - this.transform.position;
 
@@ -129,5 +131,5 @@ public class BaseEntity : MonoBehaviour
         this.transform.position += direction.normalized * movementSpeed * Time.deltaTime;
         return false;
     }
-    */
+    
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GridManager : MonoBehaviour
+public class GridManager : Manager<GridManager>
 {
     public Tilemap grid;
 
@@ -14,7 +14,7 @@ public class GridManager : MonoBehaviour
 
     protected void Awake()
     {
-        //base.Awake();
+        base.Awake();
 
         InitializeGraph();
         startPositionPerTeam = new Dictionary<Team, int>();
@@ -45,7 +45,7 @@ public class GridManager : MonoBehaviour
         }
         return graph.Nodes[currentIndex];
     }
-
+    
     public List<Node> GetPath(Node from, Node to)
     {
             return graph.GetShortestPath(from, to);
@@ -55,7 +55,7 @@ public class GridManager : MonoBehaviour
     {
         return graph.Neighbors(to);
     }
-
+    
     private void InitializeGraph()
     {
         graph = new Graph();
@@ -86,7 +86,6 @@ public class GridManager : MonoBehaviour
             {
                 if(Vector3.Distance(from.worldPosition, to.worldPosition) <= 1f && from != to)
                 {
-                    Debug.Log("Add edge called.");
                     graph.AddEdge(from, to);
                 }
             }
@@ -106,7 +105,6 @@ public class GridManager : MonoBehaviour
         
         var allEdges = graph.Edges;
         if (allEdges == null) {
-            Debug.Log("Edges are null");
             return;
         }
 

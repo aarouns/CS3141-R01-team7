@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeleeEntity : BaseEntity{
     // Update is called once per frame
-    /*
+    
     void Update(){
         if(!HasEnemy)
             FindTarget();
@@ -15,5 +15,5 @@ public class MeleeEntity : BaseEntity{
         else
             GetInRange();
     }
-    */
+    
 }

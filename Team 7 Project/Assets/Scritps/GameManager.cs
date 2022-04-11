@@ -5,7 +5,6 @@ using System;
 
 public class GameManager : Manager<GameManager>
 {
-    /*
     public List<BaseEntity> allEntitiesPrefab;
 
     Dictionary<Team, List<BaseEntity>> entitiesByTeam = new Dictionary<Team, List<BaseEntity>>();
@@ -43,6 +42,7 @@ public class GameManager : Manager<GameManager>
             entitiesByTeam[Team.Team2].Add(newEntity);
 
             newEntity.Setup(Team.Team2, GridManager.Instance.GetFreeNode(Team.Team2));
+            
         }
 
     }
@@ -53,7 +53,7 @@ public class GameManager : Manager<GameManager>
         else
             return entitiesByTeam[Team.Team1];
     }
-    */
+    
 }
 
 public enum Team
