@@ -13,8 +13,8 @@ public class HealthBar : MonoBehaviour
      public void Setup(Transform target, float maxHealth){
 
          this.maxHealth = maxHealth;
-         this.target = target;
          UpdateBar(maxHealth);
+         this.target = target;
 
      }
 

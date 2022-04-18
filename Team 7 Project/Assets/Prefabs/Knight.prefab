@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5593786876654974015}
   - component: {fileID: 2822074307413165926}
-  - component: {fileID: 7335935555887023190}
   - component: {fileID: 5483975281201617703}
   m_Layer: 0
   m_Name: Knight
@@ -84,24 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7335935555887023190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4403892350551124616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96969f5111e3d37488907a51fa80a1cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 2822074307413165926}
-  baseDamage: 1
-  baseHealth: 0
-  range: 1
-  attackSpeed: 1
-  movementSpeed: 1
 --- !u!114 &5483975281201617703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,9 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee39862e57a07f43a8e79063bd8eb12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barPrefab: {fileID: 6138478242383185188, guid: e96281dc3c0f4b541974c61445e2e9c6, type: 3}
   spriteRenderer: {fileID: 2822074307413165926}
   baseDamage: 1
   baseHealth: 0
   range: 1
   attackSpeed: 1
   movementSpeed: 1
+  myTeam: 0

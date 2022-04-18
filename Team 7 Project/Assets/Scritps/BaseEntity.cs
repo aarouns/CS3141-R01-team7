@@ -43,16 +43,15 @@ public class BaseEntity : MonoBehaviour
         this.currentNode = spawnNode;
         transform.position = currentNode.worldPosition;
         currentNode.SetOccupied(true);
-        /*
         healthbar = Instantiate(barPrefab, this.transform);
+        baseHealth = 3;
         healthbar.Setup(this.transform, baseHealth);
-        */
     }
     
     public void TakeDamage(int amount){
 
         baseHealth -= amount;
-        //healthbar.UpdateBar(baseHealth);
+        healthbar.UpdateBar(baseHealth);
 
         if(baseHealth <= 0){
 
