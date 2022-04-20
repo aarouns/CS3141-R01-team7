@@ -69,7 +69,7 @@ public class BaseEntity : MonoBehaviour
         BaseEntity candidateTarget = null;
 
         foreach(BaseEntity e in allEnemies){
-             if(Vector3.Distance(e.transform.position, this.transform.position) <= minDistance){
+            if(Vector3.Distance(e.transform.position, this.transform.position) <= minDistance){
                 minDistance = Vector3.Distance(e.transform.position, this.transform.position);
                 candidateTarget = e;
              }
