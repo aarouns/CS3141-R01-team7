@@ -350,6 +350,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allEntitiesPrefab:
   - {fileID: 5483975281201617703, guid: cb201fb8af175da4dac6b53f925cdaea, type: 3}
+  - {fileID: 5483975281201617703, guid: cb201fb8af175da4dac6b53f925cdaea, type: 3}
+  - {fileID: 5534036088413147384, guid: d8e013b7afd901f439761f49935766c0, type: 3}
+  - {fileID: 5534036088413147384, guid: d8e013b7afd901f439761f49935766c0, type: 3}
 --- !u!1 &2038556172
 GameObject:
   m_ObjectHideFlags: 0
