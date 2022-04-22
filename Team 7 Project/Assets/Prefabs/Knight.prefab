@@ -97,9 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barPrefab: {fileID: 6138478242383185188, guid: e96281dc3c0f4b541974c61445e2e9c6, type: 3}
   spriteRenderer: {fileID: 2822074307413165926}
-  baseDamage: 1
-  baseHealth: 0
+  baseDamage: 2
+  baseHealth: 5
   range: 1
   attackSpeed: 1
-  movementSpeed: 1
+  movementSpeed: 1.4
   myTeam: 0

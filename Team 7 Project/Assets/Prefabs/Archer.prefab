@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3210523289938949652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.52, y: -2.37, z: 0}
-  m_LocalScale: {x: -0.3223, y: 0.3223, z: 0.3223}
+  m_LocalScale: {x: -0.1452895, y: 0.125, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: bc93de65ffb9e5b4e859aa1d1a19c12d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c87b6aaf4baad18419647223e0429707, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,9 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barPrefab: {fileID: 6138478242383185188, guid: e96281dc3c0f4b541974c61445e2e9c6, type: 3}
   spriteRenderer: {fileID: 3210523289938949650}
-  baseDamage: 2
-  baseHealth: 2
-  range: 1
-  attackSpeed: 1
-  movementSpeed: 1
+  baseDamage: 1
+  baseHealth: 3
+  range: 5
+  attackSpeed: 0.7
+  movementSpeed: 0.6
   myTeam: 0

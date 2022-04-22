@@ -348,12 +348,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224bb14daa41d394d937ea4625ce866a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomUnits: 1
   allEntitiesPrefab:
   - {fileID: 5534036088413147384, guid: d8e013b7afd901f439761f49935766c0, type: 3}
   - {fileID: 5483975281201617703, guid: cb201fb8af175da4dac6b53f925cdaea, type: 3}
   - {fileID: 5483975281201617703, guid: cb201fb8af175da4dac6b53f925cdaea, type: 3}
-  unitsPerTeam: 3
-  randomUnits: 1
+  - {fileID: 5483975281201617703, guid: cb201fb8af175da4dac6b53f925cdaea, type: 3}
+  - {fileID: 5534036088413147384, guid: d8e013b7afd901f439761f49935766c0, type: 3}
+  - {fileID: 5534036088413147384, guid: d8e013b7afd901f439761f49935766c0, type: 3}
 --- !u!1 &2038556172
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +407,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 28ab46d1ae9baa642843b7136ce20a60, type: 2}
+  - {fileID: 2100000, guid: 8218b6efda76e724194ff13e68ced472, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
